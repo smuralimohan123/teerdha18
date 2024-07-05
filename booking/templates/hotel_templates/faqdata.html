@@ -1,0 +1,133 @@
+{% extends 'dashboard_templates/admin.html' %}
+{% block main_content %}
+
+<html>
+<head>
+    <title>DATA</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+    <style>
+        table {
+            width: 1000px;
+            border-collapse: collapse;
+            box-shadow: 0 0 20px rgba(0, 0, 0, 0.1);
+            border-radius: 10px;
+            margin: 0;
+            height: 300px;
+            margin-left: 300px;
+        }
+        th, td {
+            padding: 15px;
+            text-align: left;
+            border-bottom: 1px solid #ddd;
+            border-right: 1px solid #ddd;
+        }
+        tr:last-child td {
+            border-bottom: none;
+        }
+
+        .sr {
+            padding-left: 300px;
+        }
+
+        .styled-button {
+            width: 200px;
+            height: 50px;
+            border-radius: 5px;
+            margin-left: 1050px;
+            background-color: rgb(21, 97, 185);
+        }
+
+        a {
+            text-decoration: none;
+            color: #fff;
+        }
+
+        td a.delete {
+            font-weight: bold;
+            color: red;
+        }
+
+        td a.edit {
+            font-weight: bold;
+            color: green;
+        }
+
+        body.dark {
+            background-color: #1a1a1a;
+            color: #ffffff;
+        }   
+
+        body.dark table {
+            background-color: #333333;
+            color: #ffffff;
+        }
+
+        /* body.dark th {
+            background-color:white;
+            color: rgb(26, 3, 3);
+        } */
+
+        body.dark td {
+            background-color: #222222;
+            color: #cccccc;
+        }
+
+        body.dark .styled-button {
+            background-color:white;
+        }
+
+        body.dark a {
+            color: black;
+        }
+
+        body.dark td a.delete {
+            color: white;
+        }
+
+        body.dark td a.edit {
+            color: white;
+        }
+    </style>
+</head>
+<body><br>
+   
+    <h2 class="sr">Hotels faqs Update:</h2><br>            
+
+    <button class="styled-button"><a href="/hotel_faqreg/">FAQS-INSERT-FORM</a></button>
+
+    <br><br>
+
+    <table border="1">
+        <tr>
+            <th>Question</th>
+            <th>Answer</th>
+            <th>Update</th>
+            <th>Delete</th>
+        </tr>
+        {% for i in k1 %}
+        <tr>
+            <td><b>{{ i.question }}</b></td>
+            <td>{{ i.answer }}</td>
+            <td><a href="/hotel_faqedit/{{ i.id }}" class="edit"><i class="fas fa-edit"></i> Edit</a></td>
+            <td><a href="/hotel_faqdelete/{{ i.id }}" class="delete"><i class="fas fa-trash-alt"></i> Delete</a></td>
+        </tr>
+        {% endfor %}
+    </table><br>
+
+    <!-- Dark Mode Toggle Script -->
+    <script>
+        // Function to toggle dark mode
+        function toggleDarkMode() {
+            const body = document.body;
+            body.classList.toggle('dark');
+        }
+
+        // Example event listener for a toggle button
+        const toggleButton = document.querySelector('#darkModeToggle');
+        toggleButton.addEventListener('click', toggleDarkMode);
+    </script>
+
+</body>
+</html>
+
+{% endblock main_content %}

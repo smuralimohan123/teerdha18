@@ -1,0 +1,165 @@
+{% extends 'dashboard_templates/admin.html' %}
+{% block main_content %}
+<html>
+    <head>
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+        <title>WhyChoose Table</title>
+        <style>
+            body.dark {
+                background-color:#242526;
+                color: #ffffff;
+            }
+    
+            body.dark table {
+                background-color: #2d2d2d;
+                color: #ffffff;
+            }
+    
+            body.dark th {
+                background-color: #242526;
+                color: #ffffff;
+            }
+    
+            body.dark td {
+                background-color: #242526;
+                color: #cccccc;
+            }
+    
+            .sk {
+                padding-left: 300px;
+                margin-top: 20px;
+            }
+    
+            table {
+                width: 950px;
+                border-collapse: collapse;
+                box-shadow: 0 0 20px #242526(0, 0, 0, 0.1);
+                background: #fff;
+                border-radius: 10px;
+                margin: 0 auto;
+                margin-left: 300px; /* Adjusted margin-left for centering */
+                margin-top: 20px; /* Added margin-top for spacing */
+                height: 300px;
+            }
+    
+            th, td {
+                padding: 15px;
+                text-align: center;
+                border-bottom: 1px solid #ddd;
+                border-right: 1px solid #ddd;
+            }
+    
+            th {
+                background-color: #3498db;
+                color: white;
+                font-weight: bold;
+            }
+    
+            td {
+                background-color: #f9f9f9;
+                color:#242526;
+            }
+    
+            tr:last-child td {
+                border-bottom: none;
+            }
+    
+            td a {
+                text-decoration: none;
+                display: inline-block;
+                padding: 8px 15px;
+                border-radius: 5px;
+                margin-right: 5px;
+                color: #333;
+                font-weight: bold;
+                font-size: 13px;
+            }
+    
+            td a.delete {
+                color: red;
+            }
+            body.dark td a.delete {
+                color: white;
+            }
+    
+            td a.edit {
+                color: green;
+            }
+            body.dark td a.edit {
+                color: white;
+            }
+    
+            /* Button CSS */
+            .styled-button {
+                width: 200px;
+                margin-left: 1050px;
+                padding: 5px;
+                border: 2px solid #ddd;
+                background-color: #0a50b9;
+                border-radius: 5px;
+                cursor: pointer;
+                color: white;
+                text-align: center;
+                transition: background-color 0.3s;
+            }
+    
+            .styled-button a {
+                text-decoration: none;
+                color: white;
+                display: block;
+                width: 100%;
+                height: 100%;
+                line-height: 1.5;
+                font-family: Arial, sans-serif;
+                font-size: 13px;
+            }
+    
+            .styled-button:hover {
+                background-color: #2980b9;
+            }
+            body.dark .styled-button {
+                background-color: #1e272e;
+                }
+    
+            .styled-button:active {
+                background-color: #1f618d;
+            }
+    
+            .styled-button:focus {
+                outline: none;
+            }
+        </style>        
+    </head>
+    <body>
+      
+<br>
+
+       <h2 class="sk">Flights whychoose Update:</h2><br> 
+       
+       <button class="styled-button" style="width: 200px;margin-left: 1050px;">
+        <a href="/WhyChoose_ins/">WHYCHOOSE-INSERT-FORM</a></button>
+
+        <br><br>
+          
+        <table border="1px">
+            <tr>
+                <th>question</th>
+                <th>answer</th>
+                <th>Edit</th>
+                <th>Delete</th>
+            </tr>
+
+            {% for i in k %}
+            <tr>
+                <td>{{i.question}}</td>
+                <td>{{i.answer}}</td>
+                <td><a href="/WhyChoose_edit/{{i.id}}" class="edit"><i class="fas fa-edit"></i>Edit</a></td>
+                <td><a href="/WhyChoose_del/{{i.id}}" class="delete"><i class="fas fa-trash-alt"></i>Delete</a></td>
+            </tr>
+            {% endfor %}
+        </table><br>
+
+    </body>
+</html>
+
+{% endblock main_content %}
